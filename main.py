@@ -56,8 +56,12 @@ if __name__ == "__main__":
         print("Total number of webpages processed:", index.getDocCount())
         print ("-------------------------------------------------------------------------")
     else:
-        index.importIndex(index.getIndexFileName())
-    
+        if valid_only:
+            index.importIndex("index_valid_only.pickle")
+        else:
+            index.importIndex("index.pickle")
+
+
     # Start the search engine
     search_engine = SearchEngine(index)
     search_engine.startEngine()
